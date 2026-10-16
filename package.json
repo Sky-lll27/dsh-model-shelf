@@ -1,0 +1,16 @@
+{
+  "name": "dsh-model-shelf",
+  "version": "0.1.1",
+  "description": "DSH 聊天模型整理：拖动排序、折叠分组、自定义标签、隐藏与恢复。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {".": "./lib/index.js", "./client": "./lib/client.js", "./package.json": "./package.json"},
+  "files": ["lib", "cordis.patch.yml", "README.md", "LICENSE"],
+  "scripts": {"test": "node --test test/*.test.cjs", "pack:release": "node scripts/pack.mjs"},
+  "dsh": {"bundle": {"patch": "./cordis.patch.yml"}, "client": {"platform": "web", "inject": ["@deepseek-ai/dsh-client-ui-model-selection", "@deepseek-ai/dsh-api-remotes"]}},
+  "repository": {"type": "git", "url": "git+https://github.com/Sky-lll27/dsh-model-shelf.git"},
+  "homepage": "https://github.com/Sky-lll27/dsh-model-shelf#readme",
+  "bugs": {"url": "https://github.com/Sky-lll27/dsh-model-shelf/issues"},
+  "keywords": ["dsh", "dsh-plugin", "deepseek-harness", "model-picker", "model-selector"],
+  "license": "MIT"
+}
