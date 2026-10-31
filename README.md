@@ -13,24 +13,35 @@
 - **搜索**：匹配模型名称、ID、供应商和自定义标签。
 - **思考等级**：模型声明了可用等级时，保留独立选择控件。
 
-## 安装
+## 兼容性
 
-已在 **DeepSeek Harness Desktop 0.2.0-rc.2 / Windows** 安装并使用验证。其他版本和其他客户端暂未验证。
+| 项 | 值 |
+| --- | --- |
+| 实测 DSH | **0.2.1-rc.5**（`@deepseek-ai/dsh-desktop` / `dsh-desktop-runtime`），Windows |
+| 依赖的宿主包 | `dsh-client-ui-model-selection`、`dsh-api-remotes` —— 0.2.1-rc.5 中均存在 |
+| 依赖的插槽 | `conversation.input.model`（0.2.1-rc.5 仍由 `dsh-client-ui-conversation` / `dsh-client-ui-model-selection` 提供） |
+| 依赖的服务 | `modelDirectories`（仍在 `dsh-client-ui-model-selection` 中导出） |
+| 自带测试 | `npm test` **6/6 通过** |
+| 实际使用 | 0.2.1-rc.5 桌面上拖动排序、折叠、隐藏与恢复均正常 |
+
+更早的 0.2.0-rc.2 也安装使用验证过；其他 DSH 版本与其他客户端（web / CLI profile）暂未验证。
+
+## 安装
 
 ### 桌面端：粘贴地址安装
 
-打开 **设置 → 插件 → 添加插件**，在「包名或地址」粘贴：
-
-```text
-https://github.com/Sky-lll27/dsh-model-shelf/releases/download/v0.1.1/dsh-model-shelf-0.1.1.tgz
-```
-
-点击安装，完成后退出并重新打开 DSH。然后点击聊天框旁的模型名称；菜单底部会显示 `初版 0.1.1`。
-
-也可以填写仓库地址安装：
+打开 **设置 → 插件 → 添加插件**，在「包名或地址」粘贴仓库地址：
 
 ```text
 https://github.com/Sky-lll27/dsh-model-shelf
+```
+
+点击安装，完成后退出并重新打开 DSH。然后点击聊天框旁的模型名称；菜单底部会显示 `初版 0.1.2`。
+
+也可以安装打包好的 `.tgz`（只含 6 个发布文件，不含仓库其余内容；需要对应的 Release 资产）：
+
+```text
+https://github.com/Sky-lll27/dsh-model-shelf/releases/download/v0.1.2/dsh-model-shelf-0.1.2.tgz
 ```
 
 仓库已包含运行文件，没有 prepare 安装脚本，不需要本地编译。
@@ -40,7 +51,7 @@ https://github.com/Sky-lll27/dsh-model-shelf
 适用于由 CLI 管理的 web profile：
 
 ```sh
-dsh plugin --profile web add https://github.com/Sky-lll27/dsh-model-shelf/releases/download/v0.1.1/dsh-model-shelf-0.1.1.tgz
+dsh plugin --profile web add https://github.com/Sky-lll27/dsh-model-shelf
 ```
 
 安装后重启 DSH。桌面 profile 请优先使用桌面客户端的插件管理界面。
@@ -61,7 +72,7 @@ dsh plugin --profile web add https://github.com/Sky-lll27/dsh-model-shelf/releas
 - 隐藏只影响本插件菜单，不禁止后台调用，不修改当前已选模型。原生 `/model` 菜单不采用本插件的展示偏好。
 - 选择模型走 DSH 自己的模型选择接口；只有用户点击选择或调整思考等级时才提交切换，不发送模型提示词。
 - **同一个 profile 建议只启用一个替代模型选择器插件**，避免占用相同的聊天模型选择入口。
-- 当前为初版；尚未专门优化移动端，也未验证其他 DSH 版本。
+- 当前为初版；尚未专门优化移动端。已在 0.2.1-rc.5 与 0.2.0-rc.2 验证，其他 DSH 版本未验证。
 
 ## 更新与卸载
 

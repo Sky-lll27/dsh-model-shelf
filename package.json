@@ -1,6 +1,6 @@
 {
   "name": "dsh-model-shelf",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "DSH 聊天模型整理：拖动排序、折叠分组、自定义标签、隐藏与恢复。",
   "type": "module",
   "main": "lib/index.js",
