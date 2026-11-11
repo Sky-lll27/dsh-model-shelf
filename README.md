@@ -17,12 +17,17 @@
 
 | 项 | 值 |
 | --- | --- |
-| 实测 DSH | **0.2.1-rc.5**（`@deepseek-ai/dsh-desktop` / `dsh-desktop-runtime`），Windows |
-| 依赖的宿主包 | `dsh-client-ui-model-selection`、`dsh-api-remotes` —— 0.2.1-rc.5 中均存在 |
-| 依赖的插槽 | `conversation.input.model`（0.2.1-rc.5 仍由 `dsh-client-ui-conversation` / `dsh-client-ui-model-selection` 提供） |
+| 实测 DSH | **0.2.2-rc.1**（最新复测）；此前版本 **0.2.1-rc.5 及更早同样适配**，Windows |
+| 依赖的宿主包 | `dsh-client-ui-model-selection`、`dsh-api-remotes` —— 0.2.2-rc.1 中均存在 |
+| 依赖的插槽 | `conversation.input.model`（0.2.2-rc.1 仍由 `dsh-client-ui-conversation` / `dsh-client-ui-model-selection` 提供） |
 | 依赖的服务 | `modelDirectories`（仍在 `dsh-client-ui-model-selection` 中导出） |
 | 自带测试 | `npm test` **6/6 通过** |
-| 实际使用 | 0.2.1-rc.5 桌面上拖动排序、折叠、隐藏与恢复均正常 |
+| 实际使用 | **0.2.2-rc.1**：桌面上拖动排序、折叠、隐藏与恢复均正常；此前 0.2.1-rc.5 及更早同样正常 |
+
+**为什么不会因为 DSH 升级而失效**：本插件的 `package.json` **不声明 `engines.dsh`**，也没有
+`@deepseek-ai/dsh*` 的 `peerDependencies` 版本约束。按 DSH 的插件兼容判定规则（有 `engines.dsh`
+就只看它、否则逐条查 dsh peer），未作任何声明意味着**任何 DSH 版本都放行加载**，不会被静默跳过。
+因此上面表格里的实测版本是「验证过的版本」，而不是「允许的版本范围」。
 
 更早的 0.2.0-rc.2 也安装使用验证过；其他 DSH 版本与其他客户端（web / CLI profile）暂未验证。
 
